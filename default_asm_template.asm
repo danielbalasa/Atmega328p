@@ -8,7 +8,7 @@
 ;
 
 ;--------------------------------------------------------------------------- 
- .EQU F_CPU = 16000000		; the freq of the external oscilator is 16MHz (actually tested on an arduino board)
+ .EQU F_CPU = 16000000		; the freq of the external oscilator is 16MHz 
  .ORG 0				; place the code in memory at this address 0x0000 (the begining of FLASH MEMORY)
 
  	jmp RESET		; Reset - vector address contain a jump to the routine that executes after reset - main program 
