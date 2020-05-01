@@ -34,6 +34,9 @@
  .CSEG						; Code Segment
 	.ORG 0x0000				; place the following code in memory at this adderss 0x0000 (the begining of FLASH MEMORY) - 1 WORD Wide
 
+	; this is the vector interupts table
+	; delete the RETI instructions, undoment the JMP instructions and implement the routines in the code segment
+	
  	jmp RESET		; Reset - vector address contain a jump to the routine that executes after reset - main program - this is the first instruction to execute after reset
 	reti			; jmp INT0		; IRQ0
 	reti 			; jmp INT1		; IRQ1
