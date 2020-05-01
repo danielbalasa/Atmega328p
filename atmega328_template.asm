@@ -3,7 +3,8 @@
 ; To be used as starting point for AVR ASM Projects
 ;
 ; Created: 04/28/2020 39:03 PM
-; Author : daniel balasa
+; Author : Daniel Balasa
+; daniel.balasa@protonmail.com
 ; #################################################
 
 
