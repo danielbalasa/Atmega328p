@@ -70,8 +70,8 @@
 RESET:					; Main program start here after reset
 
 		ldi r16,high(RAMEND)	; initialize the Stack Pointer at the end of the SRAM memory
-		out SPH,r16		; Set Stack Pointer to top of RAM
+		out SPH,r16		; Set Stack Pointer to top of SRAM (the high byte)
 		ldi r16,low(RAMEND)	; RAMEND is declared in <mp328pdef.inc>
-		out SPL,r16		; 
+		out SPL,r16		; Set Stack Pointer to top of SRAM (the low byte)
 		sei			; Enable interrupts
 
