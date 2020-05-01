@@ -27,7 +27,7 @@
 ; vraiable declarations in bytes located in EEPROM
 
  .ESEG						; EEPROM Segment
-	.ORG 0x0000				; place the foloowing data in memory at this adderss (in EEPROM Data Memory)  - 1 BYTE Wide
+	.ORG 0x0000				; place the following data in memory at this adderss (in EEPROM Data Memory)  - 1 BYTE Wide
 	 					; eg. initialize 1 word in EEPROM - eevar1: .DW 0xAAAA
 
  ; ---------- CODE SEGMENT ----------
