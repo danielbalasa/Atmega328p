@@ -13,11 +13,11 @@
 
 
 ; -----------------------------------------------------------------------------------------	
-_SPIInit:						; intiliaze the SPI interface
-		sbi DDRB, DDB2				; SlaveSelect or ChipSelect or LOAD
-		sbi DDRB, DDB5				; SCK - clock
-		sbi DDRB, DDB3				; MOSI - the data OUT from master
-		sbi PORTB, PORTB5			; make SS up
+_SPIInit:					; intiliaze the SPI interface
+		sbi DDRB, DDB2			; SlaveSelect or ChipSelect or LOAD
+		sbi DDRB, DDB5			; SCK - clock
+		sbi DDRB, DDB3			; MOSI - the data OUT from master
+		sbi PORTB, PORTB5		; make SS up
 
 
 		ldi r16, 0b0101_0010		;
