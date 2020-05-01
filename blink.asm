@@ -1,10 +1,12 @@
-; #################################################
-; File: ATmega328P Template ASM
-; To be used as starting point for AVR ASM Projects
+; ##################################################
+; File: Blink Classic for ATmega328P 
+;
+; This is the implementation of the classic arduino
+; uno blink (hello world) done entirely in assembler
 ;
 ; Created: 04/28/2020 39:03 PM
 ; Author : daniel balasa
-; #################################################
+; ##################################################
 
 
 ; ---------- HEADER ZONE ----------
