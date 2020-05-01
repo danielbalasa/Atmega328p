@@ -10,28 +10,28 @@
 ; global declaration 
 
 .DEVICE ATmega328P
-.EQU F_CPU = 16000000	; the freq of the external oscilator is 16MHz (actually tested on an arduino board)
+.EQU F_CPU = 16000000	; the freq of the external oscilator is 16MHz (this is the case of the arduino board)
 
  
 ; ---------- DATA SEGMENT ----------
 ; variable declarations in bytes located in SRAM
  
  .DSEG						; Data Segment
-	.ORG 0x0100				; place the data in memory at this adderss (in SRAM Data Memory) - only .BYTE directives here - 1 BYTE Wide
+	.ORG 0x0100				; place the following data in memory at this adderss (in SRAM Data Memory) - only .BYTE directives here - 1 BYTE Wide
 	var1: .BYTE 1				; reserve 1 byte to var1
 
 ; ---------- EEPROM SEGMENT ----------
 ; vraiable declarations in bytes located in EEPROM
 
  .ESEG						; EEPROM Segment
-	.ORG 0x0000				; place the data in memory at this adderss (in EEPROM Data Memory)  - 1 BYTE Wide
+	.ORG 0x0000				; place the foloowing data in memory at this adderss (in EEPROM Data Memory)  - 1 BYTE Wide
 	 eevar1: .DW 0xAAAA			; initialize 1 word in EEPROM
 
  ; ---------- CODE SEGMENT ----------
  ; code instructions and constant declarations in words located in FLASH
 
  .CSEG						; Code Segment
-	.ORG 0x0000				; place the code in memory at this adderss 0x0000 (the begining of FLASH MEMORY) - 1 WORD Wide
+	.ORG 0x0000				; place the following code in memory at this adderss 0x0000 (the begining of FLASH MEMORY) - 1 WORD Wide
 
  	jmp RESET		; Reset - vector address contain a jump to the routine that executes after reset - main program - this is the first instruction to execute after reset
 	reti			; jmp INT0		; IRQ0
