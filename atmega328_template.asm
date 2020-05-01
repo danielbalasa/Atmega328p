@@ -1,9 +1,10 @@
-; 
+; #################################################
 ; File: ATmega328P Template ASM
+; To be used as starting point for AVR ASM Projects
 ;
 ; Created: 04/28/2020 39:03 PM
 ; Author : daniel balasa
-;
+; #################################################
 
 
 ; ---------- HEADER ZONE ----------
