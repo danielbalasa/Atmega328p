@@ -19,14 +19,14 @@
  
  .DSEG						; Data Segment
 	.ORG 0x0100				; place the following data in memory at this adderss (in SRAM Data Memory) - only .BYTE directives here - 1 BYTE Wide
-	var1: .BYTE 1				; reserve 1 byte to var1
+						; eg. reserve 1 byte to var1 - var1: .BYTE 1
 
 ; ---------- EEPROM SEGMENT ----------
 ; vraiable declarations in bytes located in EEPROM
 
  .ESEG						; EEPROM Segment
 	.ORG 0x0000				; place the foloowing data in memory at this adderss (in EEPROM Data Memory)  - 1 BYTE Wide
-	 eevar1: .DW 0xAAAA			; initialize 1 word in EEPROM
+	 					; eg. initialize 1 word in EEPROM - eevar1: .DW 0xAAAA
 
  ; ---------- CODE SEGMENT ----------
  ; code instructions and constant declarations in words located in FLASH
@@ -75,25 +75,25 @@ _reset:					; Main program start here after reset
 		out SPL,r16		; Set Stack Pointer to top of SRAM (the low byte)
 		sei			; Enable interrupts
 
-		sbi DDRB, DDB5				; define pin13 as an OUTPUT pin - set pin 5 of the IO register 0x04 to 1
+		sbi DDRB, DDB5		; define pin13 as an OUTPUT pin - set pin 5 of the IO register 0x04 to 1
 
 _mainloop:
-		sbi 0x03, PORTB5			; turn LED on - set pin 5 of the IO register 0x03 to 1
-		rcall _delay				; jump to the counting loop
-		cbi PORTB, PORTB5			; turn LED off
-		rcall _delay				; jump to the counting loop again
-		rjmp _mainloop				; go back at the begining of the main loop
+		sbi 0x03, PORTB5	; turn LED on - set pin 5 of the IO register 0x03 to 1
+		rcall _delay		; jump to the counting loop
+		cbi PORTB, PORTB5	; turn LED off
+		rcall _delay		; jump to the counting loop again
+		rjmp _mainloop		; go back at the begining of the main loop
  
 _delay:
-		ldi r24, 0x00				; one second delay iteration - load register r24 with 0x00
-		ldi r23, 0xd4				; load reggister r23 with value 0xd4 (212)
-		ldi r22, 0x30				; load reggister r22 with value 0x30 (48)
-_d1sec:							; delay ~1 second - the counting mechanism
-		subi r24, 1				; substract 1 from r24 -> r24 = r24 - 1 - SET CARRY FLAG IF 0-1
-		sbci r23, 0				; substract only the carry flag from the previous instruction - SET ALSO THE CARRY FLAG 
-		sbci r22, 0				; substract only the carry flag from the previous instruction - SET ALSO THE CARRY FLAG 
-		brcc _d1sec				; jump to _d1 if there is no carry - basically jump to _d1 as long as r22 did not reach 0
-		ret					; this way the total number of iterations are 255 x 212 x 48 = 2594880 cycles at 16Mhz the CPU time is aprox 1 sec
+		ldi r24, 0x00		; one second delay iteration - load register r24 with 0x00
+		ldi r23, 0xd4		; load reggister r23 with value 0xd4 (212)
+		ldi r22, 0x30		; load reggister r22 with value 0x30 (48)
+_d1sec:					; delay ~1 second - the counting mechanism
+		subi r24, 1		; substract 1 from r24 -> r24 = r24 - 1 - SET CARRY FLAG IF 0-1
+		sbci r23, 0		; substract only the carry flag from the previous instruction - SET ALSO THE CARRY FLAG 
+		sbci r22, 0		; substract only the carry flag from the previous instruction - SET ALSO THE CARRY FLAG 
+		brcc _d1sec		; jump to _d1 if there is no carry - basically jump to _d1 as long as r22 did not reach 0
+		ret			; this way the total number of iterations are 255 x 212 x 48 = 2594880 cycles at 16Mhz the CPU time is aprox 1 sec
 
 
 ;----------------------------------------------------------------------------
