@@ -69,6 +69,8 @@
 
 RESET:					; Main program start here after reset
 
+		; this is a best practice method if you port the software to older AVR's
+		; SP in the newer versions is automatically initialized with RAMEND
 		ldi r16,high(RAMEND)	; initialize the Stack Pointer at the end of the SRAM memory
 		out SPH,r16		; Set Stack Pointer to top of SRAM (the high byte)
 		ldi r16,low(RAMEND)	; RAMEND is declared in <mp328pdef.inc>
