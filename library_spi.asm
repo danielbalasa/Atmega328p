@@ -37,7 +37,7 @@ _SPIInit:	; intiliaze the SPI interface
 		; CPOL	= Clock Polarity		- 0
 		; CPHA	= Clock Phase			- 0
 		; SPR1	= SPI Clock Rate Select1	- 1
-		; SPR2	= SPI Clock Rate Select2	- 0
+		; SPR0	= SPI Clock Rate Select0	- 0
 		out SPCR, r16			; write the settings to the SPI Control Register (SPCR)
 		ret
     
