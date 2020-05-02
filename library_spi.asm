@@ -47,9 +47,10 @@ _SPI_MasterInit:	; intiliaze the SPI interface
 ;-------------------------------------------------------------------------------------------
 _SPI_MasterTransmit:				; transmit on SPI the value of register r16
 	
-		out SPDR, r16
+		; writing in the SPI Data Register initiate the data transmission
+		out SPDR, r16			; send 1 byte to the slave on the MOSI line
 		
-		wait_to_transmit:
+	wait_to_transmit:
 		in r16, SPSR			; read the status register for SPI
 		sbrs r16, SPIF			; if not busy transmiting skip next instruction, otherwise go to wait_to_transmit
 		rjmp wait_to_transmit
