@@ -28,7 +28,16 @@ _SPIInit:	; intiliaze the SPI interface
 		; load the SPI settings on the r16
 		; these settings are device dependent
 		; CHANGE THE SETTINGS AS NEEDED BASED ON THE DEVICE YOU ARE CONNECTING WITH
-		ldi r16, 0b0101_0010		
+		ldi r16, 0b0101_0010	
+		; the structure of the SPI COntrol Register (SPCR)
+		; SPIE 	= SPI Interrupt Enable		- 0
+		; SPE	= SPI Enable			- 1
+		; DORD	= Data Order			- 0
+		; MSTR	= Master/Slave Select		- 1
+		; CPOL	= Clock Polarity		- 0
+		; CPHA	= Clock Phase			- 0
+		; SPR1	= SPI Clock Rate Select1	- 1
+		; SPR2	= SPI Clock Rate Select2	- 0
 		out SPCR, r16			; write the settings to the SPI Control Register (SPCR)
 		ret
     
