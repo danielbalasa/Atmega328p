@@ -42,7 +42,7 @@ _SPI_MasterInit:	; intiliaze the SPI interface
 			
 			; write the settings to the SPI Control Register (SPCR)
 			out SPCR, r16			
-			ret
+ret
     
 ;-------------------------------------------------------------------------------------------
 _SPI_MasterTransmit:				; transmit on SPI the value of register r16
@@ -54,4 +54,4 @@ _SPI_MasterTransmit:				; transmit on SPI the value of register r16
 			in r16, SPSR		; read the status register for SPI
 			sbrs r16, SPIF		; if not busy transmiting skip next instruction, otherwise go to wait_to_transmit
 			rjmp wait_to_transmit
-		ret
+ret
