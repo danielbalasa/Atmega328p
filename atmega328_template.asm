@@ -12,7 +12,7 @@
 ; global declaration 
 
 .device ATmega328P	; declare the type of device
-.EQU F_CPU = 16000000	; the freq of the external oscilator is 16MHz (this is the case of the arduino board)
+.equ F_CPU = 16000000	; the freq of the external oscilator is 16MHz (this is the case of the arduino board)
 .nolist
 .include mp328pdef.inc	; include de definitions for this type of micro controller
 .list
