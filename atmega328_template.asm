@@ -11,29 +11,31 @@
 ; ---------- HEADER ZONE ----------
 ; global declaration 
 
-.DEVICE ATmega328P	; declare the type of device
+.device ATmega328P	; declare the type of device
 .EQU F_CPU = 16000000	; the freq of the external oscilator is 16MHz (this is the case of the arduino board)
-.INCLUDE mp328pdef.inc	; include de definitions for this type of micro controller
- 
+.nolist
+.include mp328pdef.inc	; include de definitions for this type of micro controller
+.list
+
 ; ---------- DATA SEGMENT ----------
 ; variable declarations in bytes located in SRAM
  
- .DSEG						; Data Segment
+ .dseg						; Data Segment
 	.ORG 0x0100				; place the following data in memory at this adderss (in SRAM Data Memory) - only .BYTE directives here - 1 BYTE Wide
 	var1: .BYTE 1				; reserve 1 byte to var1
 
 ; ---------- EEPROM SEGMENT ----------
 ; vraiable declarations in bytes located in EEPROM
 
- .ESEG						; EEPROM Segment
+ .eseg						; EEPROM Segment
 	.ORG 0x0000				; place the foloowing data in memory at this adderss (in EEPROM Data Memory)  - 1 BYTE Wide
 	 eevar1: .DW 0xAAAA			; initialize 1 word in EEPROM
 
  ; ---------- CODE SEGMENT ----------
  ; code instructions and constant declarations in words located in FLASH
 
- .CSEG						; Code Segment
-	.ORG 0x0000				; place the following code in memory at this adderss 0x0000 (the begining of FLASH MEMORY) - 1 WORD Wide
+ .cseg						; Code Segment
+	.org 0x0000				; place the following code in memory at this adderss 0x0000 (the begining of FLASH MEMORY) - 1 WORD Wide
 
 	; this is the vector interupts table
 	; delete the RETI instructions, uncomment the JMP instructions and implement the routines in the code segment as required
