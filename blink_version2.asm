@@ -56,27 +56,27 @@
 
 ;---------------------------------------------------------------------------------
 
-RESET:												; Main program start here after reset
+RESET:	; Main program start here after reset
 
-													; this is a best practice method if you port the software to older AVR's
-													; SP in the newer versions is automatically initialized with RAMEND
-				ldi		r16,high(RAMEND)			; initialize the Stack Pointer at the end of the SRAM memory
-				out		SPH,r16						; Set Stack Pointer to top of SRAM (the high byte)
-				ldi		r16,low(RAMEND)				; RAMEND is declared in <mp328pdef.inc>
-				out		SPL,r16						; Set Stack Pointer to top of SRAM (the low byte)
-				sei									; Enable interrupts
+	; this is a best practice method if you port the software to older AVR's
+	; SP in the newer versions is automatically initialized with RAMEND
+	ldi		r16,high(RAMEND)			; initialize the Stack Pointer at the end of the SRAM memory
+	out		SPH,r16					; Set Stack Pointer to top of SRAM (the high byte)
+	ldi		r16,low(RAMEND)				; RAMEND is declared in <mp328pdef.inc>
+	out		SPL,r16					; Set Stack Pointer to top of SRAM (the low byte)
+	sei							; Enable interrupts
 
 ;---------------------------------------------------------------------------------
 
 MAIN:			
 
-				jmp		MAIN						; The end  of main loop
+	jmp	MAIN	; The end  of main loop
 
 
 ;---------------------------------------------------------------------------------
 
-delay:			push	R24							; 2 cycles	; save R24 on stack
-				push	R25							; 2 cycles	; save R25 on stack
+delay:		push	R24							; 2 cycles	; save R24 on stack
+		push	R25							; 2 cycles	; save R25 on stack
 
 wait_1ms:		ldi		R24, LOW(F_MILSEC/4-1)		; 1 cycle	; initialize R24:R25 with the vlaue of F_MILSEC
 				ldi		R25, HIGH(F_MILSEC/4-1)		; 1 cycle	; this represents the number of cycles needed to waste to achieve 1ms delay
