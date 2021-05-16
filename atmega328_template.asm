@@ -11,10 +11,14 @@
 ; ---------- HEADER ZONE ----------
 ; global declaration 
 
-.device ATmega328P	; declare the type of device
+; ---------- IF your IDE does not automatically include mp328pdef.inc uncomment the next two lines
+; .device ATmega328P	; declare the type of device
+; .include mp328pdef.inc	; include de definitions for this type of micro controller
+
+
 .equ F_CPU = 16000000	; the freq of the external oscilator is 16MHz (this is the case of the arduino board)
 .nolist
-.include mp328pdef.inc	; include de definitions for this type of micro controller
+
 .list
 
 ; ---------- DATA SEGMENT ----------
@@ -35,7 +39,7 @@
  ; code instructions and constant declarations in words located in FLASH
 
  .cseg						; Code Segment
-	.org 0x0000				; place the following code in memory at this adderss 0x0000 (the begining of FLASH MEMORY) - 1 WORD Wide
+	.ORG 0x0000				; place the following code in memory at this adderss 0x0000 (the begining of FLASH MEMORY) - 1 WORD Wide
 
 	; this is the vector interupts table
 	; delete the RETI instructions, uncomment the JMP instructions and implement the routines in the code segment as required
