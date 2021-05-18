@@ -1,48 +1,19 @@
 
 ;-------------- byte2ascii conversion routine -----------
 
-; the value to onvert is stored in r16 before calling the routine
+; input: R16 = 8 bit value in the range 0 ... 255
+; output: R18, R17, R16 = ascii codes for the digits
+; ASCII values for digits are from $30 for 0 ... till $39 for 9
+; R18 will hold HUNDREDS, R17 will hold TENS, R16 will be left with ONES
 
-clr r17                         ; this will hold the HUNDREDS
-clr r18                         ; this will hold the TENS
-clr r19                         ; this will hold the ONES
-
-loop1:  cpi r16, 100            ; compare r16 with 100
-        brsh loop2              ; if r16 >=
-        subi r16, 100
-        inc r17
-        rjmp loop1
-        
-loop2: cpi r16, 10
-       brsh loop3
-       subi r16, 10
-       inc r18
-       rjmp loop2
-       
-loop3: cpi r16, 
-       brsh endloop
-       subi r16, 1
-       inc r19
-       rjmp loop3
-       
-end:  ldi r16
-
-;------------------------- vers 2
-
-;input: R16 = 8 bit value 0 ... 255
-;output: R18, R17, R16 = digits
-;bytes: 20
-;
-bcd:
-ldi r18, -1 + '0'
-_bcd1:
-inc r18
-subi r16, 100
-brcc _bcd1
-ldi r17, 10 + '0'
-_bcd2:
-dec r17
-subi r16, -10
-brcs _bcd2
-sbci r16, -'0'
+byte2ascii:     ldi r18, -1 + '0'               ; initialize r18 with the value $2F one step below ascii value of 0
+_bcd1:          inc r18                         ; increment R18
+                subi r16, 100                   ; substract 100 from the value of R16 (our number to be converted)
+                brcc _bcd1                      ; if the result of the subtraction is not bellow 0 than go back and repeat
+                ldi r17, 10 + '0'               ; initialize R17 with $3A one step over acii value of 9
+_bcd2:          dec r17                         ; substract 1 from R17
+                subi r16, -10                   ; substract -10 from R16 (actually adding 10 to the negative result of previous operation)
+                brcs _bcd2                      ; if the result is with cary go back and repeat .....
+                sbci r16, -'0'                  ; .....
 ret
+;---------------------------------------------------------
