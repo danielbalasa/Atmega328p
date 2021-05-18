@@ -5,10 +5,10 @@
 
 clr r17                         ; this will hold the HUNDREDS
 clr r18                         ; this will hold the TENS
-clr r19                         ; this will hold the ones
+clr r19                         ; this will hold the ONES
 
-loop1:  cpi r16, 100
-        brsh loop2
+loop1:  cpi r16, 100            ; compare r16 with 100
+        brsh loop2              ; if r16 >=
         subi r16, 100
         inc r17
         rjmp loop1
