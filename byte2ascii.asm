@@ -1,3 +1,13 @@
+; #################################################
+; File: byte2ascii
+; Convert one register (R16) into ASCII digits (R18,R17,R16)
+; This can be used to be sent to USART0
+;
+; Created: 18/May/2021 
+; Author : Daniel Balasa
+; daniel.balasa@protonmail.com
+; #################################################
+
 
 ;-------------- byte2ascii conversion routine -----------
 
