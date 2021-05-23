@@ -10,7 +10,7 @@
 ; daniel.balasa@protonmail.com
 ; ##################################################
 
-_delay:
+_STD_delay1second:
 		ldi r24, 0x00		; one second delay iteration - load register r24 with 0x00
 		ldi r23, 0xd4		; load reggister r23 with value 0xd4 (212)
 		ldi r22, 0x30		; load reggister r22 with value 0x30 (48)
