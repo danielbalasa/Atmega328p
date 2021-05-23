@@ -1,3 +1,15 @@
+; ##################################################
+; File: Delay 1 second for ATmega328P 
+;        running @ 16 MHz
+;
+; This is the implementation of the classic delay
+; routine
+;
+; Created: 05/23/2021 19:59 PM
+; Author : Daniel Balasa
+; daniel.balasa@protonmail.com
+; ##################################################
+
 _delay:
 		ldi r24, 0x00		; one second delay iteration - load register r24 with 0x00
 		ldi r23, 0xd4		; load reggister r23 with value 0xd4 (212)
